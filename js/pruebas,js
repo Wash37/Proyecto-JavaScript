@@ -1,0 +1,21 @@
+// function Clientes (nombre, balance, tipo) {
+//     this.nombre = nombre;
+//     this.balance = balance;
+//     this.tipo = tipo;
+// }
+
+// const cliente1 = new Clientes("Juan", 5000, "Miembro")
+// const cliente2 = new Clientes("Mauro", 10000, "Vip");
+
+// for (const propiedades in cliente2){
+//     console.log(cliente2[propiedades])   
+// }
+
+const NombreClientesRegistrados = ["Juan", "Mauro", "Martin", "Enzo"];
+const BalanceClientesRegistrados = [1000, 10000, 5000, 1000000]
+
+console.log("El balance de " + NombreClientesRegistrados[0] + " es de: $" + BalanceClientesRegistrados[0])
+
+for ( let i = 0; i < NombreClientesRegistrados.length; i++){
+    console.log( i + "- El usuario " + NombreClientesRegistrados[i] + " \ntiene en su cuenta un balance de: $" + BalanceClientesRegistrados[i])
+}
