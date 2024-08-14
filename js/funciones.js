@@ -18,7 +18,21 @@ const NombreClientesRegistrados = ["Juan", "Mauro", "Martin", "Enzo"];
 const EstatusClientesRegistrados = ["Administrador", "Vip", "Miembro", "Vip"] 
 const BalanceClientesRegistrados = [1000, 10000, 5000, 1000000]
 
-// const clientePrincipal = new Clientes("Juan", 1000, "Miembro");
+function buscarClientesPorEstatus(estatus) {
+    const clientesEncontrados = [];
+
+    for (let i = 0; i < EstatusClientesRegistrados.length; i++) {
+        if (EstatusClientesRegistrados[i] === estatus) {
+            clientesEncontrados.push({
+                nombre: NombreClientesRegistrados[i],
+                estatus: EstatusClientesRegistrados[i],
+                balance: BalanceClientesRegistrados[i]
+            });
+        }
+    }
+
+    return clientesEncontrados;
+}
 
 function cajeroAutomatico() {
     let option;
@@ -64,14 +78,42 @@ function cajeroAutomatico() {
             case 4:
                 let clave = prompt("Ingrese la contraseña")
                 if (clave == 3737){
-                    console.log("")
-                    console.log("Clave correcta ")
-                    console.log("Mostrando la lista de usuarios registrados")
-                    for ( let i = 0; i < NombreClientesRegistrados.length; i++){
-                        console.log( i + "- Usuario: " + NombreClientesRegistrados[i] + "\n   Estatus: " + EstatusClientesRegistrados[i] + "\n   Balance: " + BalanceClientesRegistrados[i]);
+                    console.log("\nClave correcta");
+                    console.log("Panel de administrador:");
+                    console.log("1. Ver lista de usuarios registrados");
+                    console.log("2. Buscar clientes por estatus");
+                    console.log("3. Volver al menú principal");
+                    let adminOption;
+                    adminOption = parseInt(prompt("Elija una opción:"));
+
+                    switch (adminOption) {
+                        case 1:
+                            console.log("\nLista de usuarios registrados:");
+                            for (let i = 0; i < NombreClientesRegistrados.length; i++) {
+                                console.log(i + " - Usuario: " + NombreClientesRegistrados[i] + "\n   Estatus: " + EstatusClientesRegistrados[i] + "\n   Balance: " + BalanceClientesRegistrados[i]);
+                            }
+                            break;
+                        case 2:
+                            let estatusBusqueda = prompt("Ingrese el estatus a buscar (Administrador, Vip, Miembro):");
+                            const resultadosBusqueda = buscarClientesPorEstatus(estatusBusqueda);
+                            if (resultadosBusqueda.length > 0) {
+                                console.log("\nClientes con estatus " + estatusBusqueda + ":");
+                                resultadosBusqueda.forEach((cliente, index) => {
+                                    console.log((index + 1) + ". Nombre: " + cliente.nombre + " - Balance: $" + cliente.balance);
+                                });
+                            } else {
+                                console.log("No se encontraron clientes con el estatus " + estatusBusqueda);
+                            }
+                            break;
+                        case 3:
+                            console.log("Volviendo al menú principal");
+                            break;
+                        default:
+                            console.log("Porfavor elija una opcion valida.");
+                            break;
                     }
-                }else {
-                    console.log("Clave incorrecta")
+                } else {
+                    console.log("Clave incorrecta");
                 }
                 break;
             case 5:
