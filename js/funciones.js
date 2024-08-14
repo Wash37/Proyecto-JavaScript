@@ -15,7 +15,7 @@ function Clientes (nombre, balance, tipo){
 const clientePrincipal = new Clientes("Juan", 1000, "Miembro");
 
 const NombreClientesRegistrados = ["Juan", "Mauro", "Martin", "Enzo"];
-const EstatusClientesRegistrados = ["Miembro", "Vip", "Miembro", "Administrador"] 
+const EstatusClientesRegistrados = ["Administrador", "Vip", "Miembro", "Vip"] 
 const BalanceClientesRegistrados = [1000, 10000, 5000, 1000000]
 
 // const clientePrincipal = new Clientes("Juan", 1000, "Miembro");
@@ -36,7 +36,7 @@ function cajeroAutomatico() {
         switch (option) {
             case 1:
                 console.log("Nombre: " + clientePrincipal.nombre);
-                console.log("Balance: $1" + clientePrincipal.balance);
+                console.log("Balance: $" + clientePrincipal.balance);
                 console.log("Estatus: " + clientePrincipal.tipo);
                 break;
             case 2:
