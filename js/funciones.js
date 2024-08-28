@@ -70,8 +70,8 @@ function ingresoDinero() {
                     confirmar.onclick = () => {
                         const monto = parseFloat(ingreso.value);
 
-                        if(isNaN(monto) && monto < 0) {
-                            balance = calcular(suma, balance, monto);
+                        if(!isNaN(monto) && monto > 0) {
+                            balance = calcular('suma', balance, monto);
                             main.innerHTML = `<h2>Tu nuevo balance es de $${balance}</h2>
                                             <button onclick="ingresoDinero()">Volver a ingresar</button>
                                             `;
@@ -102,8 +102,8 @@ function retiroDinero() {
                     confirmar.onclick = () => {
                         const monto = parseFloat(retiro.value);
 
-                        if(isNaN(monto) && monto < 0) {
-                            balance = calcular(resta, balance, monto);
+                        if(!isNaN(monto) && monto > 0) {
+                            balance = calcular('resta', balance, monto);
                             main.innerHTML = `<h2>Tu nuevo balance es de $${balance}</h2>
                                             <button onclick="retiroDinero()">Volver a retirar</button>`;
                                             let balanceStorage = balance;
