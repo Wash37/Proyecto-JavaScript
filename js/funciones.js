@@ -100,7 +100,7 @@ function retiroDinero() {
                     const confirmar = document.querySelector('#confirmar');
 
                     confirmar.onclick = () => {
-                        const monto = parseFloat(ingreso.value);
+                        const monto = parseFloat(retiro.value);
 
                         if(isNaN(monto) && monto < 0) {
                             balance = calcular(resta, balance, monto);
