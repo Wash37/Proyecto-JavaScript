@@ -72,11 +72,10 @@ function ingresoDinero() {
 
                         if(!isNaN(monto) && monto > 0) {
                             balance = calcular('suma', balance, monto);
+                            localStorage.setItem("balance", balance);
                             main.innerHTML = `<h2>Tu nuevo balance es de $${balance}</h2>
                                             <button onclick="ingresoDinero()">Volver a ingresar</button>
                                             `;
-                                            let balanceStorage = balance;
-                                            localStorage.setItem("balance", balanceStorage)
                         }else {
                             main.innerHTML = `<h2>Por favor, ingrese un monto valido</h2>
                                             <button onclick="ingresoDinero()">Volver a intentar</button>`
@@ -104,10 +103,9 @@ function retiroDinero() {
 
                         if(!isNaN(monto) && monto > 0) {
                             balance = calcular('resta', balance, monto);
+                            localStorage.setItem("balance", balance);
                             main.innerHTML = `<h2>Tu nuevo balance es de $${balance}</h2>
                                             <button onclick="retiroDinero()">Volver a retirar</button>`;
-                                            let balanceStorage = balance;
-                                            localStorage.setItem("balance", balanceStorage)
                         }else {
                             main.innerHTML = `<h2>Por favor, ingrese un monto valido</h2>
                                             <button onclick="retiroDinero()">Volver a intentar</button>`

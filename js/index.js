@@ -1,7 +1,14 @@
-let balance = 1000;
+let balance;
 let tipo = "vip";
+let balanceInicial = false;
 
-localStorage.setItem("balance", balance);
+if (localStorage.getItem("balance")) {
+    balance = parseFloat(localStorage.getItem("balance"));
+    balanceInicial = true;
+} else {
+    balance = 1000
+}
+
 localStorage.setItem("estatus", tipo);
 
 const nombre = document.querySelector('#buttonName');
