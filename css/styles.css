@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'First';
+    src: url(../Assets/fonts/Rusillaserif-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Second';
+    src: url(../Assets/fonts/AppleGaramond.ttf);
+}
+
+body {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 15vh 70vh 15vh;
+    grid-template-areas: "head",
+                         "main",
+                         "foot";
+}
+
+header {
+    grid-area: "head";
+    background-color: rgb(45, 70, 180);
+    margin-top: -20px;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+main {
+    grid-area: "main";
+    background-color: white;
+    margin-left: -8px;
+    margin-right: -8px;
+
+    display: grid;
+    grid-template-columns: 30% 40% 30%;
+    grid-template-rows: 100%;
+    grid-template-areas: "blank princi blank";
+}
+
+.options {
+    grid-area: "princi";
+    position: relative;
+    margin-top: 25%;
+}
+
+.blank {
+    grid-area: "blank";
+}
+
+footer {grid-area: "foot";
+    background-color: rgb(45, 70, 180);
+    margin-left: -8px;
+    margin-right: -8px;
+    margin-bottom: -8px;
+}
+
+
+h1 {
+    color: rgb(204, 202, 202);
+    text-align: center;
+    position: relative;
+    top: 15px;
+    font-family: 'First';
+    
+}
+
+h2, p {
+    font-family: "second";
+}
+
+.modoOscuro {
+    background-color: rgb(45, 70, 180);
+}
+
+.modoOscuroHeader {
+    background-color: rgb(45, 70, 180);
+}
+
+.modoOscuroMain {
+    background-color: rgb(128, 128, 128);
+    color: rgb(255, 255, 255);
+}
+
+.modoOscuroFooter {
+    background-color: rgb(45, 70, 180);
+  }
+  
+  .modoOscuro h1, .modoOscuro h2, .modoOscuro p {
+    color: rgb(255, 255, 255);
+  }
