@@ -13,6 +13,32 @@ function calcular(tipo, n1, n2) {
     return resultado;
 }
 
+let transacciones = [];
+
+
+function registrarTransaccion(tipo, monto, balance) {
+  const transaccion = {
+    tipo: tipo,
+    monto: monto,
+    balance: balance,
+  };
+  transacciones.push(transaccion);
+  console.log(`Transacción registrada: ${tipo} de $${monto}. Balance actual: $${balance}`);
+  console.log(transacciones);
+}
+
+function mostrarTransacciones() {
+  console.log('Últimas transacciones:');
+  console.log(transacciones);
+}
+
+const botonTransacciones = document.createElement('button');
+botonTransacciones.textContent = 'Mostrar transacciones';
+botonTransacciones.onclick = mostrarTransacciones;
+document.body.appendChild(botonTransacciones);
+botonTransacciones.classList.add('botonTransacciones');
+botonTransacciones.classList.add('posicionTrans');
+
 function cambiarModoOscuro() {
     const body = document.body;
     const header = document.querySelector('header');
@@ -27,6 +53,8 @@ function cambiarModoOscuro() {
 
 function modoOscuroEvento() {
     const modoOscuroBoton = document.getElementById('modoOscuro');
+    modoOscuroBoton.classList.add('botonTransacciones');
+    modoOscuroBoton.classList.add('posicionOscuro')
     modoOscuroBoton.addEventListener('click', cambiarModoOscuro);
 }
 
@@ -107,6 +135,7 @@ function ingresoDinero() {
                         if(!isNaN(monto) && monto > 0) {
                             balance = calcular('suma', balance, monto);
                             localStorage.setItem("balance", balance);
+                            registrarTransaccion('Ingreso', monto, balance);
                             main.innerHTML = `
                                             <div class="blank"></div>
                                             <div class="options">
@@ -162,6 +191,7 @@ function retiroDinero() {
                         if(!isNaN(monto) && monto > 0 && balance > monto) {
                             balance = calcular('resta', balance, monto);
                             localStorage.setItem("balance", balance);
+                            registrarTransaccion('Retiro', monto, balance);
                             main.innerHTML = `
                                             <div class="blank"></div>
                                             <div class="options">
