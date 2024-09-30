@@ -1,3 +1,4 @@
+
 function calcular(tipo, n1, n2) {
     let resultado;
     
@@ -16,20 +17,21 @@ function calcular(tipo, n1, n2) {
 let transacciones = [];
 
 
+
 function registrarTransaccion(tipo, monto, balance) {
-  const transaccion = {
+const transaccion = {
     tipo: tipo,
     monto: monto,
     balance: balance,
-  };
-  transacciones.push(transaccion);
-  console.log(`Transacción registrada: ${tipo} de $${monto}. Balance actual: $${balance}`);
-  console.log(transacciones);
+};
+transacciones.push(transaccion);
+console.log(`Transacción registrada: ${tipo} de $${monto}. Balance actual: $${balance}`);
+console.log(transacciones);
 }
 
 function mostrarTransacciones() {
-  console.log('Últimas transacciones:');
-  console.log(transacciones);
+console.log('Últimas transacciones:');
+console.log(transacciones);
 }
 
 const botonTransacciones = document.createElement('button');
@@ -68,6 +70,7 @@ function mostrarOpciones() {
         <p id="opcion1">Información de mi cuenta</p>
         <p id="opcion2">Ingresar dinero</p>
         <p id="opcion3">Retirar dinero</p>
+        <p id="opcion4">Valor del dolar</p>
         </div>
         <div class="blank"></div>
     `;
@@ -87,6 +90,25 @@ function mostrarOpciones() {
             retiroDinero();
         };
 
+    const opcion4 = document.querySelector('#opcion4');
+        opcion4.onclick = () => {
+            fetch('https://api.exchangerate-api.com/v4/latest/ARS')
+            .then(response => response.json())
+            .then(data => {
+            const tipoDeCambio = data.rates.USD;
+            const valorDolar = 1 / tipoDeCambio;
+            main.innerHTML = `
+                <div class="blank"> <button id="modoOscuro">Modo Oscuro</button></div>
+                <div class="options">
+                <h2>Valor del dólar: $${valorDolar}</h2>
+                <button onclick="mostrarOpciones()">Volver</button>
+                </div>
+                <div class="blank"></div>
+            `;
+            modoOscuroEvento()
+            })
+            .catch(error => console.error(error));
+        }
     }
 
 function mostrarInformacion() {
