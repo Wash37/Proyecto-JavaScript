@@ -65,6 +65,11 @@ document.addEventListener('DOMContentLoaded', modoOscuroEvento);
 function mostrarOpciones() {
     main.innerHTML = `
         <div class="blank"> <button id="modoOscuro">Modo Oscuro</button></div>
+        <h2><center>Cargando...<center><h2> 
+        <div class="blank"></div> `
+    setTimeout(() => {
+        main.innerHTML = `
+        <div class="blank"> <button id="modoOscuro">Modo Oscuro</button></div>
         <div class="options">
         <h2>Bienvenido ${nombre.value}, por favor elige una opción:</h2>
         <p id="opcion1">Información de mi cuenta</p>
@@ -75,6 +80,7 @@ function mostrarOpciones() {
         <div class="blank"></div>
     `;
     modoOscuroEvento()
+    
     const opcion1 = document.querySelector('#opcion1');
         opcion1.onclick = () => {
             mostrarInformacion();
@@ -89,6 +95,7 @@ function mostrarOpciones() {
         opcion3.onclick = () => {
             retiroDinero();
         };
+        
 
     const opcion4 = document.querySelector('#opcion4');
         opcion4.onclick = () => {
@@ -109,7 +116,9 @@ function mostrarOpciones() {
             })
             .catch(error => console.error(error));
         }
+    }, 2000);
     }
+    
 
 function mostrarInformacion() {
     localStorage.clear;
